@@ -8,11 +8,6 @@
 			templateUrl: 'app/home/home.html',
 			controller: 'HomeController as vm'
 		})
-
-		.state('error', {
-			url: '^/error',
-			templateUrl: 'app/error/error.html'
-		})
 	};
 
 	angular

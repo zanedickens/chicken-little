@@ -1,22 +1,30 @@
-<div class="col-sm-12 text-center pad-30">
+<div class="container">
+	<div class="col-sm-12 text-center pad-30">
 
-	<div class="logo animated slideInDown" ng-hide="vm.gotWeather"></div>
-
-	<div class="animated fadeIn" ng-show="vm.gotWeather" ng-cloak>
-		<i class="owf" ng-class="vm.weatherID"></i>
-	</div>
-
-	<h1>{{vm.title}}</h1>
-
-	<h4 class="animated fadeIn">{{vm.status}}</h4>
-
-	<div ng-show="vm.showProgress" class="spinner"></div>
-
-	<div ng-show="vm.gotWeather" class="row">
-		<div class="col-sm-8 col-sm-offset-2">
-			<h3 class="weather-details animated fadeIn">{{vm.temp}}</h3>
-			<a class="btn btn-lg btn-default" ng-click="vm.getLocation()">Check again</a>
+		<!-- Changing Logo / Weather Icon -->
+		<div class="animated slideInDown" ng-hide="vm.gotWeather">
+			<div class="logo" ng-hide="vm.gotError"></div>
+			<div class="error-logo animated slideInDown" ng-show="vm.gotError"></div>
 		</div>
-	</div>
 
+		<div class="animated fadeIn" ng-show="vm.gotWeather" ng-cloak>
+			<i class="owf" ng-class="vm.iconID"></i>
+		</div>
+
+		<!-- Changing Text based on progress within home.controller -->
+		<h1>{{vm.title}}</h1>
+		<h4 class="animated fadeIn">{{vm.status}}</h4>
+
+		<div ng-show="vm.showProgress" class="spinner"></div>
+
+		<div ng-show="vm.gotWeather" class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<h3 class="weather-details animated fadeIn">{{vm.temp}}</h3>
+				<a class="margin-y-30 btn btn-lg btn-default" ng-click="vm.getLocation()">Check again</a>
+			</div>
+		</div>
+
+		<a ng-show="vm.gotError" class="margin-y-30 btn btn-lg btn-default" ui-sref="home">Try Again</a>
+
+	</div>
 </div>

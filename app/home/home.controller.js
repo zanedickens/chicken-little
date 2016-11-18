@@ -10,9 +10,9 @@
 
 			// Initial Status
 			vm.status = "Is the sky falling?!";
-
-			// The Loader is initially off
+			vm.gotWeather = false;
 			vm.showProgress = false;
+			var somethingIsFalling = [200, 201, 202, 210, 211, 212, 221, 230, 231, 232, 300, 301, 302, 310, 311, 312, 314, 321, 500, 501, 502, 503, 504, 511, 520, 521, 522, 531, 600, 601, 602, 611, 612, 615, 616, 620, 621, 622]
 
 			// HTML GeoLocation and Open Weather API Functions
 			vm.getLocation = getLocation;
@@ -25,6 +25,7 @@
 				// If this is not the first time - user has used reset button
 				if (vm.pristine == false) {
 					vm.status = "Alright from the top!";
+					vm.bodyID = 'weather-nil'
 				}
 
 				// When resetting this visually clears the old information
@@ -32,30 +33,40 @@
 				// removes the question "Is the sky falling?"
 				vm.isTheSkyFalling = false;
 
-				geolocation.getLocation().then(function (data) {
+				geolocation.getLocation()
+					.then(function (data) {
 
-					// Tell user we're checking location
-					vm.showProgress = true;
-					vm.status = "Checking your location - hold still.";
-
-					$timeout(function () {
-						vm.coords = {
-							lat: data.coords.latitude,
-							long: data.coords.longitude
-						};
-						// Location check successful tell the user
-						vm.showProgress = false;
-						vm.status = 'Found you!';
+						// Tell user we're checking location
+						vm.showProgress = true;
+						vm.status = "Checking your location - hold still.";
 
 						$timeout(function () {
-							vm.status = 'Now about that sky...';
-							$timeout(function () {
-								fetchWeather(vm.coords.lat, vm.coords.long);
-							}, 2000);
-						}, 2500);
-					}, 3000);
+							vm.coords = {
+								lat: data.coords.latitude,
+								long: data.coords.longitude
+							};
+							// Location check successful tell the user
+							vm.showProgress = false;
+							vm.status = 'Found you!';
 
-				});
+							$timeout(function () {
+								vm.status = 'Now about that sky...';
+								$timeout(function () {
+									fetchWeather(vm.coords.lat, vm.coords.long);
+								}, 2000);
+							}, 2500);
+						}, 3000);
+
+					})
+					.catch(function (e) {
+						console.log("GeoLocation Error", e);
+						vm.gotError = true;
+						vm.title = 'Whoops something broke!';
+						vm.status = "Hmm... Having trouble finding you.";
+						throw e;
+						// If user blocks GeoLocation
+					})
+
 				vm.pristine = false; // First time is over now
 			}
 
@@ -71,10 +82,13 @@
 						// API Response
 						vm.details = response.data;
 
-						vm.gotWeather = true;
-
+						vm.weatherID = vm.details.weather[0].id;
 						// sets the Weather icon using the Weather Icon Font
-						vm.weatherID = 'owf-' + vm.details.weather[0].id;
+						vm.iconID = 'owf-' + vm.details.weather[0].id;
+						// sets the Weather ID to Body Tag for colour changes
+						vm.bodyID = 'weather-' + vm.details.weather[0].id;
+
+						vm.gotWeather = true;
 
 						// temp in celcius
 						vm.temp = Math.round(vm.details.main.temp) + '°C';
@@ -82,15 +96,22 @@
 						// changes title to use the Open Weather main group name
 						vm.title = vm.details.weather[0].main;
 
-						if (200 <= vm.details.weather[0].id < 701) {
+						if (somethingIsFalling.indexOf(vm.weatherID) == -1) {
 							vm.status = "You're safe! It's just " + vm.details.weather[0].description;
 						} else {
-							vm.status = "Something is definitely falling. Take cover!"
+							vm.status = "Something is falling. Take cover!"
 						}
 						vm.showProgress = false;
 
-					});
+					})
+					.catch(function (e) {
+						console.log("Weather API Error", e);
+						vm.gotError = true;
+						vm.title = "Eek! Can't help you.";
+						vm.status = "Whether the weather will come hither, is anyone's guess. We're having pesky API issues."
+						throw e;
+					})
 			}
 
-		}]);
+	}]);
 })();

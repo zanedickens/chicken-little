@@ -15,22 +15,19 @@
 	<link rel="stylesheet" href="content/css/bootstrap.min.css">
 	<link rel="stylesheet" href="content/css/animate.min.css">
 	<link rel="stylesheet" href="content/css/owfont-regular.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans|Paytone+One" rel="stylesheet">
 	<!-- Custom styles for this template -->
 	<link href="content/css/style.css" rel="stylesheet">
 </head>
 
-<body ng-class="{'orange' : vm.gotWeather}">
+<body ng-controller="HomeController" class="{{vm.bodyID}}" ui-view>
 
-	<div class="container">
-		<div ui-view ng-cloak></div>
-		<!-- /.container -->
+	<script src="content/js/angular.min.js"></script>
+	<script src="content/js/angular-ui-router.js"></script>
+	<script src="content/js/angularjs-geolocation.min.js"></script>
+	<script src="app/index.js"></script>
 
-		<script src="content/js/angular.min.js"></script>
-		<script src="content/js/angular-ui-router.js"></script>
-		<script src="content/js/angularjs-geolocation.min.js"></script>
-		<script src="app/index.js"></script>
-
-		<script src="app/home/home.controller.js"></script>
+	<script src="app/home/home.controller.js"></script>
 
 </body>
 

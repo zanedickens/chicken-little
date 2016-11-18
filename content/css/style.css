@@ -1,22 +1,82 @@
-body {
-	background: #7f5897;
-	color: #fff;
+body,
+body.weather-nil {
+	font-family: 'Droid Sans', sans-serif;
+	background: #F5DB16;
+	color: #333;
 	min-width: 300px;
 }
 
-.orange {
-	background: #F69046;
+body[class*="weather-2"] {
+	background: #666;
+	color: #fff;
+	/* Thunderstorms */
+}
+
+body[class*="weather-6"] {
+	background: #fff;
+	color: #3498DB;
+	/* Snow */
+}
+
+body[class*="weather-7"] {
+	background: #F5D589;
+	/* Mist or Smoke */
+}
+
+body[class*="weather-80"],
+body[class*="weather-95"] {
+	background: #3498DB;
+	color: #fff;
+	/* Conditions sunny up to partly cloudy, including windy */
+}
+
+body[class*="weather-3"],
+body[class*="weather-5"],
+body.weather-804 {
+	background: #ccc;
+	color: #333;
+	/* Overcast and Raining */
+}
+
+body.weather-800 .owf {
+	color: #F5DB16;
+	opacity: 1;
+	/* Make the sun yellow */
+}
+
+body[class*="weather-90"],
+body.weather-957,
+body.weather-958,
+body.weather-959,
+body[class*="weather-96"] {
+	background: #E74C3C;
+	color: #fff;
+	/* Dangerous conditions e.g. storm, tornado */
+}
+
+
+/* TYOPOGRAPHY */
+
+h1 {
+	font-family: 'Paytone One', sans-serif;
 }
 
 
 /* LOGO SECTION */
 
+.logo,
+.error-logo {
+	min-height: 200px;
+}
+
 .logo {
-	background: url('../images/chicken-little-white.png') no-repeat center center;
+	background: url('../images/chicken-little.png') no-repeat center center;
+	background-size: contain;
 }
 
 .error-logo {
-	background: url('../images/chicken-error-white.png') no-repeat center center;
+	background: url('../images/chicken-error.png') no-repeat center center;
+	background-size: contain;
 }
 
 .owf {
@@ -24,123 +84,71 @@ body {
 	opacity: 0.7;
 }
 
-
-/* MARGIN ALL */
-
-.margin-20 {
-	margin: 20px;
+.owf:hover {
+	opacity: 1;
 }
 
 
-/* MARGIN BOTH (TOP + BOTTOM) */
+/* BUTTONS */
+
+.btn-default,
+.btn-default:hover {
+	border: 2px solid #fff;
+	border-radius: 0;
+	background: transparent;
+	color: #fff;
+}
+
+.btn-default:hover {
+	background: #fff;
+	color: #333;
+}
+
+body[class*="weather-6"] .btn-default,
+body[class*="weather-6"] .btn-default:hover {
+	border-color: #3498DB;
+	color: #3498DB;
+}
+
+body[class*="weather-6"] .btn-default:hover {
+	background: #3498DB;
+	color: #fff;
+}
+
+
+/* TRANSITIONS */
+
+body,
+.btn-default,
+.btn-default:hover,
+.owf,
+.owf:hover {
+	transition: all 0.5s ease;
+}
+
+
+/* MARGIN Y */
 
 .margin-y-30 {
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
 
-.margin-y-60 {
-	margin-top: 60px;
-	margin-bottom: 60px;
-}
-
-
-/* MARGIN TOP */
-
-.margin-t-auto {
-	margin-top: auto;
-}
-
-.margin-t-10 {
-	margin-top: 10px;
-}
-
-.margin-t-15 {
-	margin-top: 15px;
-}
-
-.margin-t-20 {
-	margin-top: 20px;
-}
-
-.margin-t-30 {
-	margin-top: 30px;
-}
-
-.margin-t-40 {
-	margin-top: 40px;
-}
-
-.margin-t-60 {
-	margin-top: 60px;
-}
-
-
-/* MARGIN BOTTOM */
-
-.margin-b-0 {
-	margin-bottom: 0;
-}
-
-.margin-b-10 {
-	margin-bottom: 10px;
-}
-
-.margin-b-20 {
-	margin-bottom: 20px;
-}
-
-.margin-b-30 {
-	margin-bottom: 30px;
-}
-
-.margin-b-4vh {
-	margin-bottom: 4vh;
-}
-
-.margin-b-n30 {
-	margin-bottom: -30px;
-}
-
 
 /* PADDING */
-
-.pad-10 {
-	padding: 10px !important;
-}
-
-.pad-20 {
-	padding: 20px;
-}
 
 .pad-30 {
 	padding: 30px;
 }
 
 
-/* PADDING TOP */
-
-.pad-t-10 {
-	padding-top: 10px;
-}
-
-.pad-t-20 {
-	padding-top: 20px;
-}
-
-.pad-y-20 {
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
-
-
 /* SPINNER / LOADER / PROGRESS */
 
 .spinner {
-	width: 40px;
-	height: 40px;
-	margin: 10px auto;
-	background-color: #eee;
+	width: 100px;
+	height: 100px;
+	margin: 30px auto;
+	background-color: #333;
 	border-radius: 100%;
 	-webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
 	animation: sk-scaleout 1.0s infinite ease-in-out;
@@ -165,21 +173,5 @@ body {
 		-webkit-transform: scale(1.0);
 		transform: scale(1.0);
 		opacity: 0;
-	}
-}
-
-
-/* MEDIA QUERIES */
-
-@media screen and (min-width: 480px) {
-	.logo {
-		background: url('../images/chicken-little-white-lg.png') no-repeat center center;
-		background-size: contain;
-		min-height: 200px;
-	}
-	.error-logo {
-		background: url('../images/chicken-error-white-lg.png') no-repeat center center;
-		background-size: contain;
-		min-height: 200px;
 	}
 }
