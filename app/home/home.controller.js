@@ -108,7 +108,7 @@
 						console.log("Weather API Error", e);
 						vm.gotError = true;
 						vm.title = "Eek! Can't help you.";
-						vm.status = "Whether the weather will come hither, is anyone's guess. We're having pesky API issues."
+						vm.status = "Weather you think you can, we can't - Henry Fowl"
 						throw e;
 					})
 			}
