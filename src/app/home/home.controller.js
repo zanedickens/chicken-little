@@ -61,8 +61,8 @@
 					.catch(function (e) {
 						console.log("GeoLocation Error", e);
 						vm.gotError = true;
-						vm.title = 'Whoops something broke!';
-						vm.status = "Hmm... Having trouble finding you.";
+						vm.title = 'Tractor Beam Failed!';
+						vm.status = "We're having trouble finding you.";
 						throw e;
 						// If user blocks GeoLocation
 					});

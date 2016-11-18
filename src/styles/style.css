@@ -175,3 +175,7 @@ body,
 		opacity: 0;
 	}
 }
+
+#monkey {
+	opacity: 0.5;
+}
