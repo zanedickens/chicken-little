@@ -1,0 +1,22 @@
+<div class="col-sm-12 text-center pad-30">
+
+	<div class="logo animated slideInDown" ng-hide="vm.gotWeather"></div>
+
+	<div class="animated fadeIn" ng-show="vm.gotWeather" ng-cloak>
+		<i class="owf" ng-class="vm.weatherID"></i>
+	</div>
+
+	<h1>{{vm.title}}</h1>
+
+	<h4 class="animated fadeIn">{{vm.status}}</h4>
+
+	<div ng-show="vm.showProgress" class="spinner"></div>
+
+	<div ng-show="vm.gotWeather" class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+			<h3 class="weather-details animated fadeIn">{{vm.temp}}</h3>
+			<a class="btn btn-lg btn-default" ng-click="vm.getLocation()">Check again</a>
+		</div>
+	</div>
+
+</div>

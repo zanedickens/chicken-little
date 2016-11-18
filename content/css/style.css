@@ -1,0 +1,185 @@
+body {
+	background: #7f5897;
+	color: #fff;
+	min-width: 300px;
+}
+
+.orange {
+	background: #F69046;
+}
+
+
+/* LOGO SECTION */
+
+.logo {
+	background: url('../images/chicken-little-white.png') no-repeat center center;
+}
+
+.error-logo {
+	background: url('../images/chicken-error-white.png') no-repeat center center;
+}
+
+.owf {
+	font-size: 20rem;
+	opacity: 0.7;
+}
+
+
+/* MARGIN ALL */
+
+.margin-20 {
+	margin: 20px;
+}
+
+
+/* MARGIN BOTH (TOP + BOTTOM) */
+
+.margin-y-30 {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.margin-y-60 {
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+
+/* MARGIN TOP */
+
+.margin-t-auto {
+	margin-top: auto;
+}
+
+.margin-t-10 {
+	margin-top: 10px;
+}
+
+.margin-t-15 {
+	margin-top: 15px;
+}
+
+.margin-t-20 {
+	margin-top: 20px;
+}
+
+.margin-t-30 {
+	margin-top: 30px;
+}
+
+.margin-t-40 {
+	margin-top: 40px;
+}
+
+.margin-t-60 {
+	margin-top: 60px;
+}
+
+
+/* MARGIN BOTTOM */
+
+.margin-b-0 {
+	margin-bottom: 0;
+}
+
+.margin-b-10 {
+	margin-bottom: 10px;
+}
+
+.margin-b-20 {
+	margin-bottom: 20px;
+}
+
+.margin-b-30 {
+	margin-bottom: 30px;
+}
+
+.margin-b-4vh {
+	margin-bottom: 4vh;
+}
+
+.margin-b-n30 {
+	margin-bottom: -30px;
+}
+
+
+/* PADDING */
+
+.pad-10 {
+	padding: 10px !important;
+}
+
+.pad-20 {
+	padding: 20px;
+}
+
+.pad-30 {
+	padding: 30px;
+}
+
+
+/* PADDING TOP */
+
+.pad-t-10 {
+	padding-top: 10px;
+}
+
+.pad-t-20 {
+	padding-top: 20px;
+}
+
+.pad-y-20 {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+
+/* SPINNER / LOADER / PROGRESS */
+
+.spinner {
+	width: 40px;
+	height: 40px;
+	margin: 10px auto;
+	background-color: #eee;
+	border-radius: 100%;
+	-webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+	animation: sk-scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+	0% {
+		-webkit-transform: scale(0)
+	}
+	100% {
+		-webkit-transform: scale(1.0);
+		opacity: 0;
+	}
+}
+
+@keyframes sk-scaleout {
+	0% {
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	}
+	100% {
+		-webkit-transform: scale(1.0);
+		transform: scale(1.0);
+		opacity: 0;
+	}
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 480px) {
+	.logo {
+		background: url('../images/chicken-little-white-lg.png') no-repeat center center;
+		background-size: contain;
+		min-height: 200px;
+	}
+	.error-logo {
+		background: url('../images/chicken-error-white-lg.png') no-repeat center center;
+		background-size: contain;
+		min-height: 200px;
+	}
+}
