@@ -27,11 +27,10 @@
 
 		</div>
 	</div>
-	<div ng-show="vm.gotError" class="row">
-		<div class="col-sm-12 margin-y-30 text-center opacity-50">
-			<p ng-hide="vm.geoFailAgain"><em>Hmm, a rubber chicken with a pully in the middle. What possible use could that have?</em></p>
-			<p ng-show="vm.geoFailAgain"><em>Nope sorry, geolocation is still not working. Try a bigger antenna, that always works. If you get wet and the sky is flashing abandon this activity immediately.</em></p>
+	<div ng-show="vm.gotError" class="row text-center">
+		<div class="col-sm-12 margin-y-30 ">
+			<p class="opacity-50" ng-hide="vm.geoFailAgain"><em>Hmm, a rubber chicken with a pully in the middle. What possible use could that have?</em></p>
+			<p ng-show="vm.geoFailAgain">Nope sorry, geolocation is still not working. Try a bigger antenna, that always works. If you get wet and the sky is flashing abandon this activity immediately.</p>
 		</div>
 	</div>
-
 </div>

@@ -23,6 +23,8 @@
 
 			function getLocation() {
 
+				vm.geoFailAgain = false;
+
 				vm.title = "Chicken Little";
 
 				// If this is not the first time - user has used reset button
@@ -67,7 +69,10 @@
 						vm.title = 'Tractor Beam Failed!';
 						vm.status = "We're having trouble finding you.";
 						if (vm.pristine === false) {
-							vm.geoFailAgain = true; // Changes the copy on the error page to show that its failed again.
+							$timeout(function () {
+								vm.geoFailAgain = true; // Changes the copy on the error page to show that its failed again.
+								console.log('GeoLocation failed again.');
+							}, 1000);
 						}
 						throw e;
 						// If user blocks GeoLocation
