@@ -55,7 +55,7 @@ body[class*="weather-96"] {
 }
 
 
-/* TYOPOGRAPHY */
+/* TYPOGRAPHY */
 
 h1 {
 	font-family: 'Paytone One', sans-serif;
@@ -175,6 +175,9 @@ body,
 		opacity: 0;
 	}
 }
+
+
+/* GENERAL */
 
 #monkey {
 	opacity: 0.5;
