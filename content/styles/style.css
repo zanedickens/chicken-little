@@ -104,6 +104,9 @@ h1 {
 	color: #333;
 }
 
+
+/* Modify buttons to be visible when it snows, i.e. background is #FFF */
+
 body[class*="weather-6"] .btn-default,
 body[class*="weather-6"] .btn-default:hover {
 	border-color: #3498DB;
@@ -127,18 +130,19 @@ body,
 }
 
 
-/* MARGIN Y */
+/* UTILITY */
 
 .margin-y-30 {
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
 
-
-/* PADDING */
-
 .pad-30 {
 	padding: 30px;
+}
+
+.opacity-50 {
+	opacity: 0.5;
 }
 
 
@@ -174,11 +178,4 @@ body,
 		transform: scale(1.0);
 		opacity: 0;
 	}
-}
-
-
-/* GENERAL */
-
-#monkey {
-	opacity: 0.5;
 }
