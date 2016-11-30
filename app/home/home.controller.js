@@ -12,6 +12,7 @@
 			vm.status = "Is the sky falling?!";
 			vm.gotWeather = false;
 			vm.showProgress = false;
+			vm.geoFailAgain = false;
 
 			// These are weather codes when something is falling: Rain, Hail, Volanice Ash...
 			var somethingIsFalling = [200, 201, 202, 210, 211, 212, 221, 230, 231, 232, 300, 301, 302, 310, 311, 312, 314, 321, 500, 501, 502, 503, 504, 511, 520, 521, 522, 531, 600, 601, 602, 611, 612, 615, 616, 620, 621, 622];
@@ -65,6 +66,9 @@
 						vm.gotError = true;
 						vm.title = 'Tractor Beam Failed!';
 						vm.status = "We're having trouble finding you.";
+						if (vm.pristine === false) {
+							vm.geoFailAgain = true; // Changes the copy on the error page to show that its failed again.
+						}
 						throw e;
 						// If user blocks GeoLocation
 					});

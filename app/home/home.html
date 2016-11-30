@@ -23,12 +23,15 @@
 				</div>
 			</div>
 
-			<a ng-show="vm.gotError" class="margin-y-30 btn btn-lg btn-default" ui-sref="home">Try Again</a>
+			<a ng-show="vm.gotError" class="margin-y-30 btn btn-lg btn-default" ng-click="vm.getLocation()">Try Again</a>
+
 		</div>
 	</div>
 	<div ng-show="vm.gotError" class="row">
 		<div class="col-sm-12 margin-y-30 text-center opacity-50">
-			<p><em>Hmm, a rubber chicken with a pully in the middle. What possible use could that have?</em></p>
+			<p ng-hide="vm.geoFailAgain"><em>Hmm, a rubber chicken with a pully in the middle. What possible use could that have?</em></p>
+			<p ng-show="vm.geoFailAgain"><em>Nope sorry, geolocation is still not working. Try a bigger antenna, that always works. If you get wet and the sky is flashing abandon this activity immediately.</em></p>
 		</div>
 	</div>
+
 </div>
