@@ -8,7 +8,7 @@ If something is falling, the app will let you know too.
 ## How to run this app:
 - This is an AngularJS 1.5 app and needs a file server to run
 - On your local machine this needs to be IIS or Apache or Node HTTP-Server
-- This app is already running on live server here: http://zanedickens.com/chicken-little/#/
+- This app live here: http://zanedickens.com/chicken-little/#/ 
 - This works in Firefox 50, Chrome blocks geolocation when not using HTTPS. 
 
 ### Window 8 or 10 - ISS
@@ -20,9 +20,10 @@ If something is falling, the app will let you know too.
 ### macOS - NodeJS / http-server
 - Install nodeJS - http://treehouse.github.io/installation-guides/mac/node-mac.html
 - Install http-server via NPM - https://www.npmjs.com/package/http-server
-- Navigate in terminal to the app folder and type: http-server
+- Download the archive and extract the folder
+- Copy the folder to the your Sites folder or user root.
+- Navigate in terminal to this app folder and type: http-server
 - This will then run the file server and tell your localhost and port, for example: http://127.0.0.1:8080
-- http://localhost:8080
 - Navigate in your browser to http://localhost:8080/chicken-little-master/#/
 
 ## Once install and the app runs:
