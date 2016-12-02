@@ -49,7 +49,7 @@
 						vm.showProgress = true;
 						vm.status = "Checking your location - hold still.";
 
-						$timeout(function () {
+						$timeout(function () { // $timeout used so usre can read vm.status changes
 							vm.coords = {
 								lat: data.coords.latitude,
 								long: data.coords.longitude
@@ -93,7 +93,7 @@
 			function tryAPIGeolocation() {
 
 				vm.status = "Using Google Maps API to find you. Fingers crossed...";
-
+				// This doesn't work, returns undefined :(
 				$http.post("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAaD9BSO14vI37GoPDjbCQ5YZGG0cyvPns")
 					.then(function (data) {
 						vm.coords = {
@@ -106,10 +106,10 @@
 
 						vm.status = 'Google Maps API Failed';
 						vm.coords = {
-							lat: 18.422,
-							long: -33.9191
-						}
-
+								lat: 18.422,
+								long: -33.9191
+							}
+							// Fallback to the fallback
 						$timeout(function () {
 							vm.status = 'Showing weather for Cape Town';
 							$timeout(function () {
