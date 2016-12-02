@@ -14,14 +14,17 @@
 			vm.showProgress = false;
 			vm.geoFailAgain = false;
 			vm.pristine = true;
+			vm.coords = {};
 
 			// These are weather codes when something is falling: Rain, Hail, Volanice Ash...
 			var somethingIsFalling = [200, 201, 202, 210, 211, 212, 221, 230, 231, 232, 300, 301, 302, 310, 311, 312, 314, 321, 500, 501, 502, 503, 504, 511, 520, 521, 522, 531, 600, 601, 602, 611, 612, 615, 616, 620, 621, 622];
 
 			// HTML GeoLocation and Open Weather API Functions
 			vm.userLocation = userLocation;
+			vm.tryAPIGeolocation = tryAPIGeolocation;
 			vm.fetchWeather = fetchWeather;
 
+			// Standard HTML5 Geolocation
 			function userLocation() {
 
 				vm.geoFailAgain = false; // Set's this false each time to show a change when button pressed
@@ -66,15 +69,18 @@
 
 					})
 					.catch(function (e) {
-						console.log("GeoLocation Error", e);
+						console.log("HTML5 GeoLocation Error = ", e);
 						vm.gotError = true;
 						vm.title = 'Tractor Beam Failed!';
 						vm.status = "We're having trouble finding you.";
-						if (vm.pristine === false) {
+
+						if (e === 'Unable to determine your location') {
+
 							$timeout(function () {
-								vm.geoFailAgain = true; // Changes the copy on the error page to show that its failed again.
-								console.log('GeoLocation failed again.');
-							}, 1000);
+								tryAPIGeolocation();
+							}, 2500);
+
+							console.log('Trying Google Maps API');
 						}
 						throw e;
 						// If user blocks GeoLocation
@@ -82,6 +88,38 @@
 
 				vm.pristine = false; // First time is over now
 			}
+
+			// If the standard HTML5 geolocation fails try Google Maps API
+			function tryAPIGeolocation() {
+
+				vm.status = "Using Google Maps API to find you. Fingers crossed...";
+
+				$http.post("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAaD9BSO14vI37GoPDjbCQ5YZGG0cyvPns")
+					.then(function (data) {
+						vm.coords = {
+							lat: data.location.lat,
+							long: data.location.lng
+						}
+						fetchWeather(vm.coords.lat, vm.coords.long);
+					})
+					.catch(function (err) {
+
+						vm.status = 'Google Maps API Failed';
+						vm.coords = {
+							lat: 18.422,
+							long: -33.9191
+						}
+
+						$timeout(function () {
+							vm.status = 'Showing weather for Cape Town';
+							$timeout(function () {
+								fetchWeather(vm.coords.lat, vm.coords.long);
+							}, 2000);
+						}, 2500);
+					});
+
+			};
+
 
 			function fetchWeather() {
 
@@ -113,7 +151,7 @@
 							vm.status = "Something is falling. Take cover!";
 						}
 						vm.showProgress = false;
-
+						vm.gotError = false;
 					})
 					.catch(function (e) {
 						console.log("Weather API Error", e);
@@ -126,5 +164,5 @@
 
 			userLocation();
 
-		}]);
+							}]);
 })();

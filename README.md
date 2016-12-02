@@ -9,7 +9,7 @@ If something is falling, the app will let you know too.
 - This is an AngularJS 1.5 app and needs a web server to run
 - On your local machine this needs to be IIS or Apache or Node HTTP-Server
 - This app is live here: http://zanedickens.com/chicken-little/#/ 
-- This works in Firefox 50, Chrome blocks geolocation when not using HTTPS. 
+- This works in Firefox 50, Webkit (Chrome & Safari) blocks geolocation when not using HTTPS. 
 
 ### Window 8 or 10 - ISS
 - Install ISS: http://www.howtogeek.com/112455/how-to-install-iis-8-on-windows-8/
@@ -32,5 +32,6 @@ If something is falling, the app will let you know too.
 ## Uses: 
 - AngularJS 1.5
 - Bootstrap 3
+- Google Maps API for a fallback to HTML5 Geolocation
 - This great font for the weather symbols based on Open Weather API icon codes: http://websygen.github.io/owfont/
 - AngularJS GeoLocation: https://github.com/arunisrael/angularjs-geolocation
