@@ -8,22 +8,23 @@
 			/* jshint validthis: true */
 			var vm = this;
 
-			// Initial Status
+			// Initial Status of the app
 			vm.status = "Is the sky falling?!";
 			vm.gotWeather = false;
 			vm.showProgress = false;
 			vm.geoFailAgain = false;
+			vm.pristine = true;
 
 			// These are weather codes when something is falling: Rain, Hail, Volanice Ash...
 			var somethingIsFalling = [200, 201, 202, 210, 211, 212, 221, 230, 231, 232, 300, 301, 302, 310, 311, 312, 314, 321, 500, 501, 502, 503, 504, 511, 520, 521, 522, 531, 600, 601, 602, 611, 612, 615, 616, 620, 621, 622];
 
 			// HTML GeoLocation and Open Weather API Functions
-			vm.getLocation = getLocation;
+			vm.userLocation = userLocation;
 			vm.fetchWeather = fetchWeather;
 
-			function getLocation() {
+			function userLocation() {
 
-				vm.geoFailAgain = false;
+				vm.geoFailAgain = false; // Set's this false each time to show a change when button pressed
 
 				vm.title = "Chicken Little";
 
@@ -50,8 +51,9 @@
 								lat: data.coords.latitude,
 								long: data.coords.longitude
 							};
-							// Location check successful tell the user
+							// Location check complete - remove progress
 							vm.showProgress = false;
+							// Location check successful tell the user
 							vm.status = 'Found you!';
 
 							$timeout(function () {
@@ -80,8 +82,6 @@
 
 				vm.pristine = false; // First time is over now
 			}
-
-			getLocation(); // Run app on load / launch
 
 			function fetchWeather() {
 
@@ -123,6 +123,8 @@
 						throw e;
 					});
 			}
+
+			userLocation();
 
 		}]);
 })();

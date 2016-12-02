@@ -19,11 +19,11 @@
 			<div ng-show="vm.gotWeather" class="row">
 				<div class="col-sm-8 col-sm-offset-2">
 					<h3 class="weather-details animated fadeIn">{{vm.temp}}</h3>
-					<a class="margin-y-30 btn btn-lg btn-default" ng-click="vm.getLocation()">Check again</a>
+					<a class="margin-y-30 btn btn-lg btn-default" ng-click="vm.userLocation()">Check again</a>
 				</div>
 			</div>
 
-			<a ng-show="vm.gotError" class="margin-y-30 btn btn-lg btn-default" ng-click="vm.getLocation()">Try Again</a>
+			<a ng-show="vm.gotError" class="margin-y-30 btn btn-lg btn-default" ng-click="vm.userLocation()">Try Again</a>
 
 		</div>
 	</div>
